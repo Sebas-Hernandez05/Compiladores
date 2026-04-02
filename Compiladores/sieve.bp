@@ -1,0 +1,71 @@
+/* ======================================
+   Sieve de Eratosthenes en B-Minor+     
+   ====================================== */
+Algorith: class = {
+    name: string;
+
+    init: function void (n: string) = {
+        name = n;
+    }
+
+    run: function void ();
+}
+Sieve: class = {
+
+    limit: integer;
+    is_prime: array [100] boolean;
+
+    init: function void (n: integer) = {
+        i: integer;
+
+        limit = n;
+
+        i = 0;
+        while (i < limit) {
+            is_prime[i] = true;
+            i++;
+        }
+
+        is_prime[0] = false;
+        is_prime[1] = false;
+    }
+
+    run: function void () = {
+        p: integer;
+        multiple: integer;
+
+        p = 2;
+        while (p * p <= limit) {
+
+            if (is_prime[p]) {
+                multiple = p * p;
+
+                while (multiple <= limit) {
+                    is_prime[multiple] = false;
+                    multiple += p;
+                }
+            }
+            p++;
+        }
+    }
+    print_primes: function void () = {
+        i: integer;
+
+        i = 2;
+        while (i <= limit) {
+            print is_prime[i] ? i : 0;
+            i++;
+        }
+    }
+}
+
+// Programa principal
+
+main: function void () = {
+
+    s: Sieve;
+
+    s = new Sieve(100);
+    s.run();
+    s.print_primes();
+}

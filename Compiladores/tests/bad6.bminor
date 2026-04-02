@@ -1,0 +1,16 @@
+/* Loop */
+
+var: integer;
+
+main: function void () = {
+    new: float = 3.14;
+    if (new + 1.1)
+        new++;
+    else
+        new--;
+
+    if (var && var)
+        var++;
+    else
+        var--;
+}
