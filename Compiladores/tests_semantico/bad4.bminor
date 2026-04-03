@@ -1,0 +1,16 @@
+/* Multi-levels */
+
+var: integer;
+
+main: function void (var: integer) = {
+    {
+        f: float = 3.14;
+        var + 3.14;
+        var = f;
+        var = 'c';
+        main(var);
+    }
+    var++;
+}
+
+new: integer = var;

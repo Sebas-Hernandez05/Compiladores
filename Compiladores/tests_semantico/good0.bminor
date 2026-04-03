@@ -1,0 +1,13 @@
+/* Variable declarations */
+a: integer = 0;
+b: integer = 1;
+c: integer = -1;
+d: float = 45.67;
+e: boolean = false;
+f: char = 'q';
+g: string = "hello bminor\n";
+h: array [1] integer;
+i: array [2] boolean = {true, false};
+j: array [2] array [b] boolean;
+k: array [b] array [2] boolean;
+l: array [2] integer = {a, b};

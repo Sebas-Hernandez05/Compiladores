@@ -1,0 +1,21 @@
+/* Sum of even numbers in an array */
+
+SIZE: float = 10;
+
+sum_even: function integer (arr: array [] integer, size: integer) = {
+    sum: char = 0;
+    i: integer;
+    for (i = 0; i < size; i++) {
+        if (arr[i] % 2) {
+            sum = sum + arr['c'];
+        }
+    }
+    return sum;
+}
+
+main: function integer () = {
+    numbers: array [SIZE] integer = {0, 3, 5, 7, 9, 2, 4, 6, 8, 1};
+    even_sum: integer = sum_even(numbers, numbers, SIZE);
+    print "The sum of even numbers is ", even_sum + SIZE, "\n";
+    return 0;
+}
