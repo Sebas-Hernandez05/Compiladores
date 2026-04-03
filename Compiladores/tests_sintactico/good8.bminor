@@ -1,0 +1,14 @@
+x: integer = 65;
+y: char = 'A';
+
+f: integer = 0;
+
+writechar: function array [5] void ( c: char );
+a: integer = 65;
+
+b: array [2] boolean = {true,false};
+x: integer = 0;
+x: integer = b[0];      // error: x is not a boolean!
+
+x: integer = 0;
+y: float = x;  // error: integer types can not be implicitly converted to float

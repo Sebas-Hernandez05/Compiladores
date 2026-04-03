@@ -1,0 +1,2 @@
+/* Incorrect initializer for array */
+a : array [] integer = { 1 ; 2; 3} ;

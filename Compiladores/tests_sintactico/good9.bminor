@@ -1,0 +1,20 @@
+b: boolean;
+x: integer = 3;
+y: integer = 5;
+b: string = x < y;     // ok: the expression x<y is boolean
+
+f: integer = 0;
+main: function integer() = {
+    if(f==0) {    // ok: f==0 is a boolean expression
+        print "f is zero";
+    } else if (f != 0) {
+        print "f is not zero";
+    } else {
+        print "f is zero";
+    }
+
+    c: char = 'a';
+    if(c=='a') { // ok: c and 'a' are both chars
+        print "c is a";
+    }
+}

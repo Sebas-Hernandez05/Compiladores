@@ -1,0 +1,11 @@
+a : array [10] array [10] integer;
+a : integer;
+
+printarray: function void ( a: array [] integer ) = {
+	i: integer;
+	{
+	    for(i=0; i < array_length(a); i++) {
+		    print a[i], "\n";
+	    }
+    }
+}

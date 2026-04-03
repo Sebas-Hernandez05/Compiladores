@@ -1,0 +1,3 @@
+/* Expression at the top level */
+a : integer = 10;
+a += 10;

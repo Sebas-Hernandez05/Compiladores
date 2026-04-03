@@ -1,0 +1,3 @@
+str : string = "Hello World!";
+some_char : char = '\0x41';
+some_char : char = 'a';

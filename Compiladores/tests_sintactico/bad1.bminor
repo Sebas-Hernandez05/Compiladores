@@ -1,0 +1,2 @@
+/* Missing size for array */
+a: array [3] integer array [] float;

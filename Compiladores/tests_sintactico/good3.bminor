@@ -1,0 +1,9 @@
+main : function integer (args : string) = {
+    result : integer = usage();
+    return 0;
+}
+
+usage : function void () = {
+    print "Usage", 10;
+    return;
+}
