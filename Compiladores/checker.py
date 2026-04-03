@@ -12,6 +12,8 @@ Recorre el AST con el patrón Visitor (multimethod) y verifica:
 7. Existencia de función main
 '''
 
+"----------------------------------------------------------------------------"
+
 from multimethod import multimethod
 from model import *
 
