@@ -711,4 +711,6 @@ if __name__ == '__main__':
         print('No se pudo parsear el archivo.')
         raise SystemExit(1)
 
-    check(ast, show_symtab)
+    check(ast, show_symtab) 
+
+    #comentario sebas
