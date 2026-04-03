@@ -3,13 +3,13 @@
 Analizador semántico para el lenguaje B++.
 
 Recorre el AST con el patrón Visitor (multimethod) y verifica:
-  1. Declaraciones y alcance léxico
-  2. Redeclaraciones en el mismo alcance
-  3. Uso de identificadores no definidos
-  4. Chequeo de tipos en expresiones, asignaciones y operadores
-  5. Reglas de funciones: parámetros, retorno, llamadas
-  6. break/continue solo dentro de bucles
-  7. Existencia de función main
+1. Declaraciones y alcance léxico
+2. Redeclaraciones en el mismo alcance
+3. Uso de identificadores no definidos
+4. Chequeo de tipos en expresiones, asignaciones y operadores
+5. Reglas de funciones: parámetros, retorno, llamadas
+6. break/continue solo dentro de bucles
+7. Existencia de función main
 '''
 
 from multimethod import multimethod
