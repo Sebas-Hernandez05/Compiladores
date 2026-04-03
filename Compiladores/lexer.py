@@ -4,8 +4,6 @@ from rich.table import Table
 from rich.console import Console
 import sly
 
-# Definición de tokens
-
 class Lexer(sly.Lexer):
     tokens  = {
         # Palabras Reservadas
