@@ -1,0 +1,16 @@
+/* Factorial of a number using recursion */
+
+factorial: function integer (n: integer) = {
+    if (n <= 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+main: function integer () = {
+    num: integer = 5;
+    result: integer = factorial(num);
+    print "The factorial of ", num, " is ", result, "\n";
+    return 0;
+}

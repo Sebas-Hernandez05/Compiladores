@@ -1,0 +1,23 @@
+/* expressions */
+
+a: integer;
+b: float;
+c: string;
+d: boolean;
+
+func: function integer (arg: integer);
+
+main: function void () = {
+    a + b;
+    b + c;
+    a ^ a;
+    b = "hello";
+    d = a;
+    a && b;
+    1 && false;
+    b >= c;
+    func();
+    func(c);
+    (func(a) + b) * 2 == (func(c) % 2);
+    return 0;
+}

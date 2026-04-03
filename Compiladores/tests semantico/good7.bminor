@@ -1,0 +1,21 @@
+/* Finding max in array */
+
+SIZE: integer = 10;
+numbers: array [SIZE] integer = {0, 3, 5, 7, 9, 2, 4, 6, 8, 1};
+
+find_max: function integer (arr: array [] integer, size: integer) = {
+    max: integer = arr[0];
+    i: integer;
+    for (i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+main: function integer () = {
+    max: integer = find_max(numbers, SIZE);
+    print "The maximum number is ", max, "\n";
+    return 0;
+}

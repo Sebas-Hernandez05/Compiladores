@@ -1,0 +1,15 @@
+/* Incorrect type for initializer */
+
+a: integer = 0.1;
+b: float = 1;
+c: char = a;
+d: array [b] integer = {true, 1, 3, a, b};
+e: integer = "hello\n";
+f: integer = 's';
+g: integer = false;
+h: float = "hello\n";
+i: float = 's';
+j: float = false;
+k: string = 1;
+l: string = 's';
+m: string = false;

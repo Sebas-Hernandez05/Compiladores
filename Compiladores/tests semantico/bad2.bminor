@@ -1,0 +1,26 @@
+/* incorrect arguments */
+
+arr: array [5] integer = {1, 2, 3, 4, 5};
+
+a: function void (
+    arg1: integer, arg2: float, arg3: char, arg4: string, arg5: array [] integer
+) = { return; }
+
+b: function void() = { return; }
+
+main: function void () = {
+    i: integer = 0;
+    f: float = 3.14;
+    c: char = 'c';
+    s: string = "string";
+
+    a(i, f, c, s, arr);
+    a(i, f, c, s);
+    a(f, c, s, arr);
+    a(i, i, c, s, arr);
+    a(i, f, c, c, arr);
+    a();
+
+    b(1);
+    b(1, 2, f);
+}
