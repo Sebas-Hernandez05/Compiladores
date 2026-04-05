@@ -34,19 +34,6 @@ class Parser(sly.Parser):
 
     tokens = Lexer.tokens
 
-    precedence = (
-        ('right', 'ELSE'),
-        ('right', '=', 'ADDEQ', 'SUBEQ', 'MULEQ', 'DIVEQ', 'MODEQ'),
-        ('left',  'LOR'),
-        ('left',  'LAND'),
-        ('left',  'EQ', 'NE'),
-        ('left',  'LT', 'LE', 'GT', 'GE'),
-        ('left',  '+', '-'),
-        ('left',  '*', '/', '%'),
-        ('right', 'UMINUS', 'UNOT', 'PREINC', 'PREDEC'),
-        ('left',  'INC', 'DEC', '[', '(', '.'),
-    )
-
     # ── Programa ──────────────────────────────────────────────────────────
     @_('declaration_list')
     def program(self, p):
@@ -419,6 +406,19 @@ class Parser(sly.Parser):
             self.errok()   # intenta recuperarse y seguir parseando
         else:
             print("Error de sintaxis: fin de archivo inesperado")
+
+    precedence = (
+        ('right', 'ELSE'),
+        ('right', '=', 'ADDEQ', 'SUBEQ', 'MULEQ', 'DIVEQ', 'MODEQ'),
+        ('left',  'LOR'),
+        ('left',  'LAND'),
+        ('left',  'EQ', 'NE'),
+        ('left',  'LT', 'LE', 'GT', 'GE'),
+        ('left',  '+', '-'),
+        ('left',  '*', '/', '%'),
+        ('right', 'UMINUS', 'UNOT', 'PREINC', 'PREDEC'),
+        ('left',  'INC', 'DEC', '[', '(', '.'),
+    )
 
 
 if __name__ == '__main__':
