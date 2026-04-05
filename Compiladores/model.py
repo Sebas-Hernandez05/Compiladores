@@ -1,4 +1,4 @@
-# mcast.py
+# model.py
 '''
 Modelo de datos (AST) para el lenguaje definido por lexer.py.
 
@@ -8,36 +8,43 @@ El lenguaje soporta:
   - Funciones: function <nombre>(...) : <tipo> { ... }
   - Flujo   : if/else, while, for, return, print
   - Operadores compuestos: +=  -=  *=  /=  %=  ++  --
+
+Patrón Visitor implementado con `multimethod.multimeta`.
+Cada visitor define métodos `visit(self, node: TipoConcreto)` con
+sobrecarga por tipo; los nodos delegan con `node.accept(visitor)`.
 '''
 
 from dataclasses import dataclass, field
 from typing import List, Any, Optional
+from multimethod import multimeta
 
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Infraestructura base: Visitor + Node
+# Infraestructura base: Visitor (multimeta) + Node
 # ──────────────────────────────────────────────────────────────────────────────
 
-class Visitor:
+class Visitor(metaclass=multimeta):
     '''
-    Patrón Visitor genérico.  Cada subclase implementa métodos
-    visit_<NombreDeNodo>(node, *args, **kwargs).
-    '''
-    def visit(self, node, *args, **kwargs):
-        method_name = f'visit_{type(node).__name__}'
-        visitor = getattr(self, method_name, self.generic_visit)
-        return visitor(node, *args, **kwargs)
+    Clase base para visitors del AST.
 
-    def generic_visit(self, node, *args, **kwargs):
-        raise NotImplementedError(
-            f'No existe visitor para el nodo {type(node).__name__!r}'
-        )
+    Usa `multimethod.multimeta` como metaclase, lo que permite definir
+    múltiples métodos `visit` con distintas anotaciones de tipo en la
+    misma clase:
+
+        class MiVisitor(Visitor):
+            def visit(self, node: Program):        ...
+            def visit(self, node: VarDeclaration): ...
+            def visit(self, node: BinaryExpr):     ...
+
+    El despacho es automático en función del tipo del argumento.
+    '''
 
 
 @dataclass
 class Node:
     '''Nodo raíz del AST.'''
     def accept(self, visitor: Visitor, *args, **kwargs):
+        '''Delega en visitor.visit(self).  Despacho gestionado por multimeta.'''
         return visitor.visit(self, *args, **kwargs)
 
 
@@ -52,7 +59,14 @@ class Statement(Node):
 
 @dataclass
 class Expression(Node):
-    pass
+    '''
+    Base de todas las expresiones.
+
+    El campo `type` se usa para anotar el tipo semántico resultante
+    durante el análisis semántico (checker).  Su valor por defecto
+    es None antes de ser visitado.
+    '''
+    type: Any = field(default=None, init=False, repr=False, compare=False)
 
 
 @dataclass
@@ -148,6 +162,7 @@ class FuncPrototype(Declaration):
     return_type: Optional[Node]   = None
     lineno     : int = 0
 
+
 @dataclass
 class ClassDeclaration(Declaration):
     '''
@@ -227,6 +242,8 @@ class PrintStatement(Statement):
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Expresiones
+# Nota: todos los nodos Expression heredan el campo `type` (Any, default None)
+# definido en la base Expression.  El checker lo anotará durante el análisis.
 # ──────────────────────────────────────────────────────────────────────────────
 
 @dataclass
