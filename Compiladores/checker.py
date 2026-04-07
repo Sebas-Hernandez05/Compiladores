@@ -12,19 +12,7 @@ Implementa:
 
 from collections import ChainMap
 from multimethod import multimeta
-from model import (
-    Program,
-    SimpleType, ArrayType, UserType,
-    VarDeclaration, Parameter, FuncDeclaration, FuncPrototype, ClassDeclaration,
-    CompoundStatement, ExprStatement,
-    IfStatement, WhileStatement, ForStatement,
-    ReturnStatement, PrintStatement,
-    AssignExpr, BinaryExpr, UnaryExpr, PostfixExpr,
-    CallExpr, IndexExpr, MemberExpr, GroupExpr,
-    IntLiteral, FloatLiteral, CharLiteral, StringLiteral,
-    BoolLiteral, ArrayLiteral,
-    Identifier, ThisExpr, SuperExpr,
-)
+from model import *
 
 
 # ─────────────────────────────────────────────────────────────────────────────
