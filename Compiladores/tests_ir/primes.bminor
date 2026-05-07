@@ -1,0 +1,58 @@
+// primes.bminor
+// Programa de prueba para ircode:
+// - funciones
+// - while/for
+// - if/else
+// - operadores %, *, <=, ==
+// - print
+// - return
+
+is_prime: function boolean (n: integer) = {
+    i: integer;
+    
+    if (n <= 1) {
+    	return false;
+    }
+    if (n == 2) {
+    	return true;
+    }
+    if (n % 2 == 0) {
+    	return false; 
+    }
+    for(i = 3; i*i <= n; i += 2) {
+    	if (n % i == 0) {
+    		return false;
+    	}
+    }
+    return true;
+}
+
+main: function integer () = {
+    n: integer = 2;
+    limit: integer = 100;
+    count: integer = 0;
+    sum: integer = 0;
+
+    print "Primos hasta: ";
+    print limit;
+    print "----------------";
+
+    while (n <= limit) {
+        if (is_prime(n)) {
+            print n;
+            count = count + 1;
+            sum = sum + n;
+        } 
+
+        n = n + 1;
+    }
+
+    print "----------------";
+    print "Cantidad de primos:";
+    print count;
+
+    print "Suma de primos:";
+    print sum;
+
+    return 0;
+}

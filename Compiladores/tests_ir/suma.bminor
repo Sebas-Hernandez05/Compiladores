@@ -1,0 +1,12 @@
+// prueba basica
+
+main: function void () = {
+	i: integer = 1;
+	s: integer = 0;
+	
+	while (i <= 100) {
+		s += i;
+		i += 1;
+	}
+	print s;
+}
