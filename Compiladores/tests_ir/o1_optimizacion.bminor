@@ -1,0 +1,19 @@
+// Prueba para -O1:
+// - constant folding en 2 + 3 * 4
+// - comparacion constante 1 < 2
+// - CBRANCH constante convertido a BRANCH
+// - salto al LABEL inmediatamente siguiente eliminado
+// - codigo inalcanzable despues de return eliminado
+
+main: function void () = {
+    x: integer = 2 + 3 * 4;
+
+    if (1 < 2) {
+        print x;
+    } else {
+        print 999;
+    }
+
+    return;
+    print 12345;
+}
